@@ -1,0 +1,401 @@
+.odoo-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--safecheck-green-pale);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.odoo-top {
+  background: var(--odoo-white);
+  position: relative;
+  z-index: 3;
+}
+
+.odoo-header {
+  background: var(--odoo-white);
+  padding-top: env(safe-area-inset-top);
+}
+
+.odoo-nav {
+  max-width: 1180px;
+  min-height: 104px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.odoo-logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.odoo-logo-link img {
+  height: 80px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  margin-top: 30px;
+}
+
+.odoo-hero {
+  position: relative;
+  background: var(--odoo-bg);
+  flex: 1;
+  min-height: calc(100vh - 104px);
+  min-height: calc(100dvh - 104px);
+  padding: 8px 0 max(56px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.odoo-curve {
+  position: absolute;
+  left: 50%;
+  top: -72px;
+  width: 160%;
+  height: 120px;
+  transform: translateX(-50%);
+  background: var(--odoo-white);
+  border-radius: 0 0 50% 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.odoo-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.odoo-banner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 12px auto 44px;
+  padding: 0.55rem 1.15rem;
+  background: var(--safecheck-green);
+  border: 1px solid var(--safecheck-green);
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  color: #1a2b56;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.odoo-banner:hover {
+  color: #1a2b56;
+}
+
+.odoo-app-grid {
+  row-gap: 1.7rem !important;
+  width: 100%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.odoo-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  color: #2b2f33;
+  text-align: center;
+}
+
+.odoo-app:hover {
+  color: #2b2f33;
+}
+
+.odoo-app-col {
+  display: flex;
+  justify-content: center;
+}
+
+.odoo-app-tile {
+  width: 96px;
+  height: 96px;
+  background: var(--odoo-white);
+  border-radius: 16px;
+  box-shadow: var(--odoo-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.odoo-app-tile img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+@media (hover: hover) {
+  .odoo-app:hover .odoo-app-tile {
+    transform: translateY(-3px);
+    box-shadow: var(--odoo-shadow-hover);
+  }
+}
+
+.odoo-app-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: #3a3f44;
+}
+
+@media (max-width: 991.98px) {
+  .odoo-nav {
+    min-height: 88px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .odoo-logo-link img {
+    height: 64px;
+    max-width: min(240px, 62vw);
+    margin-top: 12px;
+  }
+
+  .odoo-hero {
+    min-height: calc(100dvh - 88px);
+    padding: 12px 0 max(36px, env(safe-area-inset-bottom));
+  }
+
+  .odoo-banner {
+    white-space: normal;
+    text-align: center;
+    border-radius: 18px;
+    padding: 0.65rem 1rem;
+    margin-left: 12px;
+    margin-right: 12px;
+    max-width: min(100%, 420px);
+  }
+
+  .odoo-app-tile {
+    width: 78px;
+    height: 78px;
+  }
+
+  .odoo-curve {
+    top: -48px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .odoo-hero {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .odoo-hero-inner {
+    padding-top: 4px;
+  }
+
+  .odoo-curve {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .odoo-nav {
+    min-height: 68px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .odoo-logo-link img {
+    height: 44px;
+    max-width: min(196px, 68vw);
+    margin-top: 0;
+  }
+
+  .odoo-hero {
+    min-height: calc(100dvh - 68px);
+    padding: 8px 0 max(28px, env(safe-area-inset-bottom));
+  }
+
+  .odoo-banner {
+    font-size: 12.5px;
+    line-height: 1.4;
+    margin: 4px 8px 22px;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .odoo-app-grid {
+    max-width: 100%;
+    row-gap: 1.1rem !important;
+    --bs-gutter-x: 0.7rem;
+    --bs-gutter-y: 0.85rem;
+  }
+
+  .odoo-app {
+    gap: 0.45rem;
+    width: 100%;
+    padding: 6px 2px;
+    -webkit-tap-highlight-color: rgba(164, 235, 14, 0.25);
+  }
+
+  .odoo-app-label {
+    font-size: 12px;
+    max-width: 100%;
+    padding: 0 2px;
+    overflow-wrap: anywhere;
+  }
+
+  .odoo-app-tile {
+    width: 74px;
+    height: 74px;
+    border-radius: 14px;
+  }
+
+  .odoo-app-tile img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .splash-logo {
+    height: 68px;
+    max-width: min(220px, 72vw);
+  }
+
+  .splash-title {
+    font-size: 18px;
+  }
+
+  .splash-subtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 379.98px) {
+  .odoo-banner {
+    font-size: 11.5px;
+  }
+
+  .odoo-app-tile {
+    width: 66px;
+    height: 66px;
+  }
+
+  .odoo-app-tile img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .odoo-app-label {
+    font-size: 11px;
+  }
+}
+
+.splash {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--odoo-white);
+  padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.splash.is-fading {
+  opacity: 0;
+}
+
+.splash-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+}
+
+.splash-logo {
+  height: 92px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  animation: splash-pop 0.55s ease;
+}
+
+.splash-title {
+  margin: 0 0 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2b56;
+  letter-spacing: -0.02em;
+}
+
+.splash-subtitle {
+  margin: 0 0 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5f6368;
+}
+
+.splash-track {
+  width: 180px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--safecheck-green-pale);
+  overflow: hidden;
+}
+
+.splash-bar {
+  display: block;
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: var(--safecheck-green);
+  animation: splash-load 1.2s ease-in-out infinite;
+}
+
+@keyframes splash-pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes splash-load {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
