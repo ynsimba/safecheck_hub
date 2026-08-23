@@ -1,18 +1,58 @@
 :root {
-  --odoo-primary: #714b67;
-  --odoo-primary-hover: #5e3d56;
-  --odoo-teal: #017e84;
-  --odoo-text: #212529;
-  --odoo-muted: #5f6368;
-  --odoo-gray: #8f8f8f;
-  --odoo-border: #e6e6e6;
-  --odoo-bg: #eef6d2;
-  --odoo-white: #ffffff;
-  --safecheck-green: #a4eb0e;
-  --safecheck-green-pale: #eef6d2;
-  --odoo-shadow: 0 2px 10px rgba(33, 37, 41, 0.06);
-  --odoo-shadow-hover: 0 8px 22px rgba(33, 37, 41, 0.1);
+  /* Brand */
+  --sc-green: #a4eb0e;
+  --sc-green-rgb: 164, 235, 14;
+  --sc-green-deep: #83c400;
+  --sc-green-pale: #eef6d2;
+  --sc-navy: #1a2b56;
+  --sc-navy-rgb: 26, 43, 86;
+  --sc-navy-deep: #101a38;
+
+  /* Neutrals */
+  --sc-ink: #16202e;
+  --sc-muted: #5b6472;
+  --sc-border: rgba(16, 24, 40, 0.08);
+  --sc-white: #ffffff;
+  --sc-surface: #ffffff;
+  --sc-surface-glass: rgba(255, 255, 255, 0.72);
+  --sc-bg: #f2f8e4;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 6px 18px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.12), 0 4px 12px rgba(16, 24, 40, 0.06);
+  --shadow-glow: 0 10px 30px rgba(var(--sc-green-rgb), 0.35);
+
+  /* Radius */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 0.18s;
+  --dur-med: 0.32s;
+  --dur-slow: 0.6s;
+
   --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Sora', 'Inter', system-ui, sans-serif;
+
+  /* Back-compat aliases used by legacy component styles */
+  --odoo-primary: var(--sc-navy);
+  --odoo-primary-hover: var(--sc-navy-deep);
+  --odoo-teal: #017e84;
+  --odoo-text: var(--sc-ink);
+  --odoo-muted: var(--sc-muted);
+  --odoo-gray: #8f8f8f;
+  --odoo-border: var(--sc-border);
+  --odoo-bg: var(--sc-bg);
+  --odoo-white: var(--sc-white);
+  --safecheck-green: var(--sc-green);
+  --safecheck-green-pale: var(--sc-green-pale);
+  --odoo-shadow: var(--shadow-sm);
+  --odoo-shadow-hover: var(--shadow-md);
 }
 
 *,
@@ -33,10 +73,11 @@ body,
 
 body {
   font-family: var(--font);
-  color: var(--odoo-text);
-  background: var(--safecheck-green-pale);
+  color: var(--sc-ink);
+  background: var(--sc-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -51,4 +92,108 @@ button {
 img,
 svg {
   display: block;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--sc-navy);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.odoo-app:focus-visible,
+.odoo-app-tile:focus-visible {
+  outline: 2.5px solid var(--sc-navy);
+  outline-offset: 4px;
+}
+
+/* Shared motion keyframes ------------------------------------------------ */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(var(--drift-x, 18px), var(--drift-y, -22px)) scale(1.08);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--sc-green-rgb), 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(var(--sc-green-rgb), 0);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes spring-up {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

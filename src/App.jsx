@@ -34,6 +34,11 @@ export default function App() {
 
       <main className="odoo-hero" id="contenu">
         <div className="odoo-curve" aria-hidden="true" />
+        <div className="odoo-orbs" aria-hidden="true">
+          <span className="odoo-orb odoo-orb-1" />
+          <span className="odoo-orb odoo-orb-2" />
+          <span className="odoo-orb odoo-orb-3" />
+        </div>
         <div className="container odoo-hero-inner">
           <div className="text-center">
             <AnnouncementBanner />
