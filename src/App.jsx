@@ -3,6 +3,8 @@ import Header from './components/Header.jsx'
 import AnnouncementBanner from './components/AnnouncementBanner.jsx'
 import AppGrid from './components/AppGrid.jsx'
 import SplashScreen from './components/SplashScreen.jsx'
+import InstallPrompt from './components/InstallPrompt.jsx'
+import Footer from './components/Footer.jsx'
 import './App.css'
 
 const SPLASH_MS = 2200
@@ -22,17 +24,15 @@ export default function App() {
     }
   }, [])
 
-  if (booting) {
-    return <SplashScreen fading={fading} />
-  }
-
   return (
     <div className="odoo-page" id="top">
+      {booting ? <SplashScreen fading={fading} /> : null}
+
       <div className="odoo-top">
         <Header />
       </div>
 
-      <main className="odoo-hero">
+      <main className="odoo-hero" id="contenu">
         <div className="odoo-curve" aria-hidden="true" />
         <div className="container odoo-hero-inner">
           <div className="text-center">
@@ -41,6 +41,8 @@ export default function App() {
           <AppGrid />
         </div>
       </main>
+      <Footer />
+      <InstallPrompt />
     </div>
   )
 }

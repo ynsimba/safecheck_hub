@@ -1,8 +1,8 @@
 .odoo-page {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   background: var(--safecheck-green-pale);
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -11,6 +11,7 @@
   background: var(--odoo-white);
   position: relative;
   z-index: 3;
+  flex-shrink: 0;
 }
 
 .odoo-header {
@@ -20,9 +21,9 @@
 
 .odoo-nav {
   max-width: 1180px;
-  min-height: 104px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  min-height: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,25 +36,40 @@
 }
 
 .odoo-logo-link img {
-  height: 80px;
+  height: clamp(40px, 8vh, 72px);
   width: auto;
-  max-width: 280px;
+  max-width: 260px;
   object-fit: contain;
   object-position: left center;
   display: block;
-  margin-top: 30px;
 }
 
 .odoo-hero {
   position: relative;
   background: var(--odoo-bg);
-  flex: 1;
-  min-height: calc(100vh - 104px);
-  min-height: calc(100dvh - 104px);
-  padding: 8px 0 max(56px, env(safe-area-inset-bottom));
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 8px 0 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.odoo-footer {
+  background: var(--odoo-white);
+  border-top: 1px solid rgba(26, 43, 86, 0.08);
+  padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.odoo-footer-copy {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a2b56;
 }
 
 .odoo-curve {
@@ -73,12 +89,14 @@
   position: relative;
   z-index: 2;
   max-width: 1080px;
-  padding-top: 8px;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .odoo-banner {
@@ -86,7 +104,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  margin: 12px auto 44px;
+  margin: 0 auto clamp(12px, 3vh, 28px);
   padding: 0.55rem 1.15rem;
   background: var(--safecheck-green);
   border: 1px solid var(--safecheck-green);
@@ -105,8 +123,24 @@
   color: #1a2b56;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.odoo-apps {
+  width: 100%;
+}
+
 .odoo-app-grid {
-  row-gap: 1.7rem !important;
+  row-gap: clamp(0.6rem, 2vh, 1.4rem) !important;
   width: 100%;
   max-width: 720px;
   margin-left: auto;
@@ -121,10 +155,18 @@
   gap: 0.7rem;
   color: #2b2f33;
   text-align: center;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .odoo-app:hover {
   color: #2b2f33;
+}
+
+.odoo-app:active {
+  transform: scale(0.92);
 }
 
 .odoo-app-col {
@@ -133,8 +175,8 @@
 }
 
 .odoo-app-tile {
-  width: 96px;
-  height: 96px;
+  width: clamp(58px, 11vh, 96px);
+  height: clamp(58px, 11vh, 96px);
   background: var(--odoo-white);
   border-radius: 16px;
   box-shadow: var(--odoo-shadow);
@@ -147,15 +189,22 @@
 }
 
 .odoo-app-tile img {
-  width: 56px;
-  height: 56px;
+  width: clamp(34px, 6.5vh, 56px);
+  height: clamp(34px, 6.5vh, 56px);
   object-fit: contain;
 }
 
 @media (hover: hover) {
+  .odoo-app:hover {
+    transform: scale(1.08);
+  }
+
   .odoo-app:hover .odoo-app-tile {
-    transform: translateY(-3px);
     box-shadow: var(--odoo-shadow-hover);
+  }
+
+  .odoo-app:hover:active {
+    transform: scale(0.94);
   }
 }
 
@@ -169,35 +218,22 @@
 
 @media (max-width: 991.98px) {
   .odoo-nav {
-    min-height: 88px;
     padding-left: 12px;
     padding-right: 12px;
   }
 
   .odoo-logo-link img {
-    height: 64px;
     max-width: min(240px, 62vw);
-    margin-top: 12px;
-  }
-
-  .odoo-hero {
-    min-height: calc(100dvh - 88px);
-    padding: 12px 0 max(36px, env(safe-area-inset-bottom));
   }
 
   .odoo-banner {
     white-space: normal;
     text-align: center;
     border-radius: 18px;
-    padding: 0.65rem 1rem;
+    padding: 0.5rem 0.9rem;
     margin-left: 12px;
     margin-right: 12px;
     max-width: min(100%, 420px);
-  }
-
-  .odoo-app-tile {
-    width: 78px;
-    height: 78px;
   }
 
   .odoo-curve {
@@ -208,12 +244,8 @@
 
 @media (max-width: 767.98px) {
   .odoo-hero {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .odoo-hero-inner {
-    padding-top: 4px;
+    align-items: center;
+    justify-content: center;
   }
 
   .odoo-curve {
@@ -223,59 +255,48 @@
 
 @media (max-width: 575.98px) {
   .odoo-nav {
-    min-height: 68px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   .odoo-logo-link img {
-    height: 44px;
     max-width: min(196px, 68vw);
-    margin-top: 0;
   }
 
-  .odoo-hero {
-    min-height: calc(100dvh - 68px);
-    padding: 8px 0 max(28px, env(safe-area-inset-bottom));
+  .odoo-footer-copy {
+    font-size: 12px;
   }
 
   .odoo-banner {
     font-size: 12.5px;
-    line-height: 1.4;
-    margin: 4px 8px 22px;
-    padding: 0.55rem 0.8rem;
+    line-height: 1.35;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0.45rem 0.75rem;
   }
 
   .odoo-app-grid {
     max-width: 100%;
-    row-gap: 1.1rem !important;
-    --bs-gutter-x: 0.7rem;
-    --bs-gutter-y: 0.85rem;
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 0.45rem;
   }
 
   .odoo-app {
-    gap: 0.45rem;
+    gap: 0.35rem;
     width: 100%;
-    padding: 6px 2px;
+    padding: 2px;
     -webkit-tap-highlight-color: rgba(164, 235, 14, 0.25);
   }
 
   .odoo-app-label {
-    font-size: 12px;
+    font-size: 11.5px;
     max-width: 100%;
     padding: 0 2px;
     overflow-wrap: anywhere;
   }
 
   .odoo-app-tile {
-    width: 74px;
-    height: 74px;
     border-radius: 14px;
-  }
-
-  .odoo-app-tile img {
-    width: 44px;
-    height: 44px;
   }
 
   .splash-logo {
@@ -295,24 +316,18 @@
 @media (max-width: 379.98px) {
   .odoo-banner {
     font-size: 11.5px;
-  }
-
-  .odoo-app-tile {
-    width: 66px;
-    height: 66px;
-  }
-
-  .odoo-app-tile img {
-    width: 40px;
-    height: 40px;
+    white-space: normal;
   }
 
   .odoo-app-label {
-    font-size: 11px;
+    font-size: 10.5px;
   }
 }
 
 .splash {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -398,4 +413,55 @@
   100% {
     transform: translateX(350%);
   }
+}
+
+.pwa-install {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #1a2b56;
+  color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(26, 43, 86, 0.22);
+}
+
+.pwa-install-text {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pwa-install-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pwa-install-dismiss,
+.pwa-install-accept {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pwa-install-dismiss {
+  background: transparent;
+  color: #d7dce8;
+}
+
+.pwa-install-accept {
+  background: var(--safecheck-green);
+  color: #1a2b56;
 }

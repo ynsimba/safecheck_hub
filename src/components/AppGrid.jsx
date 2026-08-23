@@ -11,17 +11,31 @@ const APPS = [
 
 export default function AppGrid() {
   return (
-    <div className="row g-3 g-md-4 odoo-app-grid justify-content-center">
-      {APPS.map(({ name, icon, href }) => (
-        <div className="col-6 col-sm-3 odoo-app-col" key={icon}>
-          <a href={href ?? `#app-${name}`} className="odoo-app">
-            <span className="odoo-app-tile">
-              <img src={icon} alt={name} width="56" height="56" />
-            </span>
-            <span className="odoo-app-label">{name}</span>
-          </a>
-        </div>
-      ))}
-    </div>
+    <section className="odoo-apps" aria-labelledby="apps-heading">
+      <h2 id="apps-heading" className="visually-hidden">
+        Applications de l&apos;écosystème Safecheck
+      </h2>
+      <div className="row g-3 g-md-4 odoo-app-grid justify-content-center">
+        {APPS.map(({ name, icon, href }) => {
+          const external = Boolean(href)
+          return (
+            <div className="col-3 odoo-app-col" key={icon}>
+              <a
+                href={href ?? `#app-${name}`}
+                className="odoo-app"
+                {...(external
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+              >
+                <span className="odoo-app-tile">
+                  <img src={icon} alt={`Icône ${name}`} width="56" height="56" />
+                </span>
+                <span className="odoo-app-label">{name}</span>
+              </a>
+            </div>
+          )
+        })}
+      </div>
+    </section>
   )
 }

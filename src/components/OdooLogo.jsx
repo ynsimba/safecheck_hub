@@ -3,7 +3,7 @@ export default function OdooLogo({ className = '' }) {
     <img
       className={className}
       src="/logo-1.png"
-      alt="Safecheck RDC"
+      alt="Safecheck-Hub, écosystème Safecheck RDC"
     />
   )
 }

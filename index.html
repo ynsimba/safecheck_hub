@@ -2,19 +2,125 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/ICONE.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#ffffff" />
-    <title>Safecheck-Hub | Écosystème Safecheck</title>
+    <title>Safecheck-Hub | Portail de l'écosystème Safecheck RDC</title>
+    <meta
+      name="description"
+      content="Safecheck-Hub rassemble les applications de l'écosystème Safecheck en RDC : Safecheck-App, SafeMed, SafePay, RH, Commercial, Finances, Intendance et Administration."
+    />
+    <meta
+      name="keywords"
+      content="Safecheck, Safecheck-Hub, Safecheck RDC, SafeMed, SafePay, écosystème Safecheck, applications métier RDC"
+    />
+    <meta name="author" content="Safecheck RDC" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" content="#A4EB0E" />
+    <meta name="color-scheme" content="light" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Safecheck" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="canonical" href="https://safecheck-hub-yues.vercel.app/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Safecheck-Hub" />
+    <meta property="og:title" content="Safecheck-Hub | Portail de l'écosystème Safecheck RDC" />
+    <meta
+      property="og:description"
+      content="Accédez en un clic aux applications Safecheck : Safecheck-App, SafeMed, SafePay et les modules métier."
+    />
+    <meta property="og:url" content="https://safecheck-hub-yues.vercel.app/" />
+    <meta property="og:image" content="https://safecheck-hub-yues.vercel.app/logo-1.png" />
+    <meta property="og:image:alt" content="Logo Safecheck RDC" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Safecheck-Hub | Écosystème Safecheck RDC" />
+    <meta
+      name="twitter:description"
+      content="Portail des applications Safecheck-App, SafeMed, SafePay, RH, Commercial, Finances, Intendance et Administration."
+    />
+    <meta name="twitter:image" content="https://safecheck-hub-yues.vercel.app/logo-1.png" />
+
+    <link rel="icon" type="image/png" href="/ICONE.png" />
+    <link rel="apple-touch-icon" href="/pwa-192.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Safecheck-Hub",
+            "url": "https://safecheck-hub-yues.vercel.app/",
+            "inLanguage": "fr-FR",
+            "description": "Portail de l'écosystème Safecheck en République démocratique du Congo.",
+            "publisher": { "@id": "https://safecheck-hub-yues.vercel.app/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://safecheck-hub-yues.vercel.app/#organization",
+            "name": "Safecheck RDC",
+            "url": "https://safecheck-hub-yues.vercel.app/",
+            "logo": "https://safecheck-hub-yues.vercel.app/ICONE.png",
+            "sameAs": [
+              "https://www.safecheckrdc.com",
+              "https://www.safecheck-med.com"
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "name": "Applications Safecheck-Hub",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Safecheck-App",
+                "url": "https://www.safecheckrdc.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "SafeMed",
+                "url": "https://www.safecheck-med.com"
+              },
+              { "@type": "ListItem", "position": 3, "name": "SafePay" },
+              { "@type": "ListItem", "position": 4, "name": "RH" },
+              { "@type": "ListItem", "position": 5, "name": "Commercial" },
+              { "@type": "ListItem", "position": 6, "name": "Finances" },
+              { "@type": "ListItem", "position": 7, "name": "Intendance" },
+              { "@type": "ListItem", "position": 8, "name": "Administration" }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Safecheck-Hub</h1>
+      <p>Bienvenue dans l'écosystème Safecheck-Hub. Activez JavaScript pour accéder aux applications.</p>
+      <ul>
+        <li><a href="https://www.safecheckrdc.com">Safecheck-App</a></li>
+        <li><a href="https://www.safecheck-med.com">SafeMed</a></li>
+        <li>SafePay</li>
+        <li>RH</li>
+        <li>Commercial</li>
+        <li>Finances</li>
+        <li>Intendance</li>
+        <li>Administration</li>
+      </ul>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
