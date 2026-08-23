@@ -31,18 +31,18 @@ export default function InstallPrompt() {
   }
 
   return (
-    <div className="pwa-install" role="dialog" aria-label="Installer Safecheck-Hub">
-      <div className="pwa-install-body">
-        <span className="pwa-install-icon" aria-hidden="true">
+    <div className="sc-install" role="dialog" aria-label="Installer Safecheck-Hub">
+      <div className="sc-install-body">
+        <span className="sc-install-icon" aria-hidden="true">
           <i className="bi bi-download" />
         </span>
-        <p className="pwa-install-text">Installer Safecheck-Hub sur cet appareil</p>
+        <p className="sc-install-text">Installer Safecheck-Hub sur cet appareil</p>
       </div>
-      <div className="pwa-install-actions">
-        <button type="button" className="pwa-install-dismiss" onClick={() => setVisible(false)}>
+      <div className="sc-install-actions">
+        <button type="button" className="sc-install-dismiss" onClick={() => setVisible(false)}>
           Plus tard
         </button>
-        <button type="button" className="pwa-install-accept" onClick={install}>
+        <button type="button" className="sc-install-accept" onClick={install}>
           Installer
         </button>
       </div>

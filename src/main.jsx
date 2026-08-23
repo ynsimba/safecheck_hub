@@ -5,7 +5,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import './index.css'
 import App from './App.jsx'
 import { registerPWA } from './registerPWA.js'
+import { applyTheme, readTheme } from './theme.js'
 
+applyTheme(readTheme())
 registerPWA()
 
 createRoot(document.getElementById('root')).render(

@@ -7,6 +7,7 @@ const PRECACHE = [
   '/pwa-512.png',
   '/ICONE.png',
   '/logo-1.png',
+  '/logo-2.png',
 ]
 
 self.addEventListener('install', (event) => {

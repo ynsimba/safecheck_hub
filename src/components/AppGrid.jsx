@@ -11,28 +11,28 @@ const APPS = [
 
 export default function AppGrid() {
   return (
-    <section className="odoo-apps" aria-labelledby="apps-heading">
-      <h2 id="apps-heading" className="visually-hidden">
+    <section className="sc-apps" aria-labelledby="apps-heading">
+      <h2 id="apps-heading" className="sc-visually-hidden">
         Applications de l&apos;écosystème Safecheck
       </h2>
-      <div className="odoo-app-grid">
+      <div className="sc-grid">
         {APPS.map(({ name, icon, href }, index) => {
           const external = Boolean(href)
           return (
             <a
               href={href ?? `#app-${name}`}
-              className="odoo-app"
+              className="sc-card"
               key={icon}
               style={{ '--i': index }}
               {...(external
                 ? { target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
             >
-              <span className="odoo-app-tile">
-                <span className="odoo-app-tile-glow" aria-hidden="true" />
-                <img src={icon} alt={`Icône ${name}`} width="56" height="56" loading="lazy" />
+              <span className="sc-card-border" aria-hidden="true" />
+              <span className="sc-card-chip">
+                <img src={icon} alt="" width="48" height="48" loading="lazy" />
               </span>
-              <span className="odoo-app-label">{name}</span>
+              <span className="sc-card-label">{name}</span>
             </a>
           )
         })}
