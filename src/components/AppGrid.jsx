@@ -4,8 +4,8 @@ const APPS = [
   { name: 'SafePay', icon: '/pay.png' },
   { name: 'RH', icon: '/RH.png' },
   { name: 'Commercial', icon: '/ccc.png' },
-  { name: 'Finances', icon: '/icons/finances.svg' },
-  { name: 'Intendance', icon: '/icons/intendance.svg' },
+  { name: 'Finances', icon: '/Finnnn.png' },
+  { name: 'Intendance', icon: '/Inttt.png', iconSize: 'lg' },
   { name: 'Administration', icon: '/icons/administration.svg' },
 ]
 
@@ -16,7 +16,7 @@ export default function AppGrid() {
         Applications de l&apos;écosystème Safecheck
       </h2>
       <div className="sc-grid">
-        {APPS.map(({ name, icon, href }, index) => {
+        {APPS.map(({ name, icon, href, iconSize }, index) => {
           const external = Boolean(href)
           return (
             <a
@@ -30,7 +30,14 @@ export default function AppGrid() {
             >
               <span className="sc-card-border" aria-hidden="true" />
               <span className="sc-card-chip">
-                <img src={icon} alt="" width="48" height="48" loading="lazy" />
+                <img
+                  src={icon}
+                  alt=""
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  className={iconSize === 'lg' ? 'is-lg' : undefined}
+                />
               </span>
               <span className="sc-card-label">{name}</span>
             </a>

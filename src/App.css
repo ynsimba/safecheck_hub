@@ -340,6 +340,11 @@
   object-fit: contain;
 }
 
+.sc-card-chip img.is-lg {
+  width: 90%;
+  height: 90%;
+}
+
 .sc-card-label {
   font-size: 12.5px;
   font-weight: 600;
@@ -458,6 +463,11 @@
   .sc-card-chip img {
     width: 68%;
     height: 68%;
+  }
+
+  .sc-card-chip img.is-lg {
+    width: 92%;
+    height: 92%;
   }
 
   .sc-card-label {
