@@ -1,5 +1,5 @@
 const APPS = [
-  { name: 'Safecheck-App', icon: '/ICONE.png', href: 'https://www.safecheckrdc.com' },
+  { name: 'Safecheck-App', icon: '/ICONE.png', href: 'https://app.safecheckrdc.com' },
   { name: 'SafeMed', icon: '/icon.png', href: 'https://www.safecheck-med.com' },
   { name: 'SafePay', icon: '/pay.png', href: 'https://pay.safecheckrdc.com/' },
   { name: 'RH', icon: '/RH.png' },

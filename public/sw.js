@@ -1,4 +1,4 @@
-const CACHE_NAME = 'safecheck-hub-v1'
+const CACHE_NAME = 'safecheck-hub-v2'
 const PRECACHE = [
   '/',
   '/index.html',
@@ -36,6 +36,28 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url)
   if (url.origin !== self.location.origin) return
+
+  const isAppShell =
+    request.mode === 'navigate' ||
+    url.pathname === '/' ||
+    url.pathname.endsWith('.html') ||
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('.css')
+
+  if (isAppShell) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const copy = response.clone()
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy))
+          }
+          return response
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match('/index.html'))),
+    )
+    return
+  }
 
   event.respondWith(
     caches.match(request).then((cached) => {
