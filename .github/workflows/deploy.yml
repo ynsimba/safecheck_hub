@@ -1,0 +1,24 @@
+name: Deploy production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: VPS hub.safecheckrdc.com
+    runs-on: ubuntu-latest
+    if: ${{ secrets.VPS_SSH_KEY != '' }}
+    steps:
+      - name: Déployer via SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: 191.215.38.33
+          username: safecheck
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            if [ -x /var/www/safecheck-hub/deploy/update.sh ]; then
+              bash /var/www/safecheck-hub/deploy/update.sh
+            else
+              echo "Hub pas encore installé sur le VPS — skip"
+            fi
