@@ -34,16 +34,19 @@ export default function InstallPrompt() {
     <div className="sc-install" role="dialog" aria-label="Installer Safecheck-Hub">
       <div className="sc-install-body">
         <span className="sc-install-icon" aria-hidden="true">
-          <i className="bi bi-download" />
+          <img src="/ICONE.png" alt="" width="22" height="22" />
         </span>
-        <p className="sc-install-text">Installer Safecheck-Hub sur cet appareil</p>
+        <p className="sc-install-text">
+          <strong>Installer Safecheck-Hub</strong>
+          <span>Accès instantané depuis votre écran d&apos;accueil</span>
+        </p>
       </div>
       <div className="sc-install-actions">
         <button type="button" className="sc-install-dismiss" onClick={() => setVisible(false)}>
           Plus tard
         </button>
         <button type="button" className="sc-install-accept" onClick={install}>
-          Installer
+          <i className="bi bi-download" aria-hidden="true" /> Installer
         </button>
       </div>
     </div>
