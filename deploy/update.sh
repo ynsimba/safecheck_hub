@@ -14,6 +14,10 @@ if ! flock -n 9; then
 fi
 
 echo "==> git"
+if [ ! -d "${APP_ROOT}/.git" ]; then
+  echo "ERREUR: ${APP_ROOT} n'est pas un dépôt git." >&2
+  exit 1
+fi
 git fetch origin
 git reset --hard origin/main
 sed -i 's/\r$//' "${APP_ROOT}/deploy/"*.sh "${APP_ROOT}/deploy/nginx.conf" 2>/dev/null || true

@@ -7,6 +7,12 @@ const APPS = [
   { name: 'Finances', icon: '/Finnnn.png' },
   { name: 'Intendance', icon: '/Inttt.png', iconSize: 'lg' },
   { name: 'Administration', icon: '/icons/administration.svg' },
+  {
+    name: 'Safe-Support',
+    icon: '/icons/support.svg',
+    href: 'https://support.safecheckrdc.com',
+    iconSize: 'lg',
+  },
 ]
 
 export default function AppGrid() {

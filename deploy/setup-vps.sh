@@ -24,15 +24,20 @@ command -v certbot >/dev/null
 mkdir -p /var/www/certbot
 usermod -aG safecheck www-data || true
 
-echo "==> clone $APP_ROOT ($BRANCH)"
+echo "==> code source $APP_ROOT ($BRANCH)"
 mkdir -p "$APP_ROOT"
 chown safecheck:safecheck "$APP_ROOT"
-if [ ! -d "${APP_ROOT}/.git" ]; then
-  sudo -u safecheck git clone --branch "$BRANCH" "$REPO" "$APP_ROOT"
-else
-  sudo -u safecheck git -C "$APP_ROOT" fetch --prune origin
-  sudo -u safecheck git -C "$APP_ROOT" checkout "$BRANCH"
-  sudo -u safecheck git -C "$APP_ROOT" reset --hard "origin/$BRANCH"
+if [ "${SKIP_GIT:-0}" != "1" ]; then
+  if [ ! -d "${APP_ROOT}/.git" ]; then
+    sudo -u safecheck git clone --branch "$BRANCH" "$REPO" "$APP_ROOT"
+  else
+    sudo -u safecheck git -C "$APP_ROOT" fetch --prune origin
+    sudo -u safecheck git -C "$APP_ROOT" checkout "$BRANCH"
+    sudo -u safecheck git -C "$APP_ROOT" reset --hard "origin/$BRANCH"
+  fi
+elif [ ! -f "${APP_ROOT}/package.json" ]; then
+  echo "ERREUR: SKIP_GIT=1 mais ${APP_ROOT}/package.json absent." >&2
+  exit 1
 fi
 chown -R safecheck:safecheck "$APP_ROOT"
 chmod 755 "$APP_ROOT"
@@ -47,8 +52,12 @@ if [ ! -f "$NGINX_SRC" ]; then
   exit 1
 fi
 mkdir -p "$APP_ROOT/deploy"
-cp "$NGINX_SRC" "$APP_ROOT/deploy/nginx.conf"
-cp "$0" "$APP_ROOT/deploy/setup-vps.sh" 2>/dev/null || true
+if [ "$(readlink -f "$NGINX_SRC")" != "$(readlink -f "$APP_ROOT/deploy/nginx.conf")" ]; then
+  cp "$NGINX_SRC" "$APP_ROOT/deploy/nginx.conf"
+fi
+if [ "$(readlink -f "$0")" != "$(readlink -f "$APP_ROOT/deploy/setup-vps.sh")" ]; then
+  cp "$0" "$APP_ROOT/deploy/setup-vps.sh"
+fi
 sed -i 's/\r$//' "$APP_ROOT/deploy/"*.sh "$APP_ROOT/deploy/nginx.conf" 2>/dev/null || true
 chmod +x "$APP_ROOT/deploy/"*.sh
 

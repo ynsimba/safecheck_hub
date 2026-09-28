@@ -62,7 +62,6 @@
 .sc-brand-logo {
   display: block;
   position: relative;
-  top: 100px;
   height: clamp(56px, 9.6vh, 84px);
   width: auto;
   max-width: min(360px, 60vw);
@@ -257,7 +256,7 @@
 }
 
 /* App grid ------------------------------------------------------------------
-   Mobile: 2 columns x 4 rows. Tablet/desktop: 4 columns x 2 rows. */
+   Mobile: 2 columns. Tablet/desktop: 4 columns. */
 
 .sc-apps {
   width: 100%;
@@ -434,7 +433,6 @@
   }
 
   .sc-brand-logo {
-    top: 36px;
     max-width: min(260px, 54vw);
   }
 
