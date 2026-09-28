@@ -1,4 +1,4 @@
-const CACHE_NAME = 'safecheck-hub-v5'
+const CACHE_NAME = 'safecheck-hub-v6'
 const PRECACHE = [
   '/',
   '/index.html',

@@ -30,10 +30,21 @@ export default function AnnouncementBanner() {
 
   return (
     <div className="sc-intro">
-      <p className="sc-eyebrow">Écosystème Safecheck RDC</p>
-      <h1 className="sc-heading">
+      <p className="sc-eyebrow sc-anim">
+        <span className="sc-eyebrow-badge" aria-hidden="true">
+          <i className="bi bi-shield-fill-check" />
+        </span>
+        <span className="sc-eyebrow-text">
+          Écosystème <strong>Safecheck</strong>
+        </span>
+        <span className="sc-eyebrow-tag">RDC</span>
+      </p>
+      <h1 className="sc-heading sc-anim">
         {greeting}. Choisissez votre <span className="sc-heading-accent">application</span>.
       </h1>
+      <p className="sc-subheading sc-anim">
+        Un accès unique à tous les outils de votre organisation.
+      </p>
     </div>
   )
 }
