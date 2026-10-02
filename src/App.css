@@ -921,14 +921,19 @@ html[data-theme='light'] .sc-aurora-2 {
   background: var(--chip-bg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm), var(--inner-highlight);
-  transition: transform 0.5s var(--ease-spring);
+  transform-origin: center center;
+  transition: transform 0.45s var(--ease-spring);
 }
 
 .sc-card-chip img {
   width: 84%;
   height: 84%;
   object-fit: contain;
-  transition: filter var(--dur-med) ease, opacity var(--dur-med) ease;
+  transform-origin: center center;
+  transition:
+    filter var(--dur-med) ease,
+    opacity var(--dur-med) ease,
+    transform 0.45s var(--ease-spring);
 }
 
 .sc-card-chip img.is-lg {
@@ -986,14 +991,26 @@ html[data-theme='light'] .sc-aurora-2 {
   .sc-card:hover,
   .sc-card:focus-visible {
     --lift: -4px;
-    background: var(--panel-hover);
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
+    background: rgba(var(--sc-green-rgb), 0.12);
+    border-color: rgba(var(--sc-green-rgb), 0.4);
+    box-shadow:
+      var(--shadow-card-hover),
+      var(--inner-highlight),
+      0 0 0 1px rgba(var(--sc-green-rgb), 0.12),
+      0 18px 40px -20px rgba(var(--sc-green-rgb), 0.45);
   }
 
   .sc-card[data-status='live']:hover,
   .sc-card[data-status='live']:focus-visible {
-    border-color: var(--border-accent);
+    background: rgba(var(--sc-green-rgb), 0.16);
+    border-color: rgba(var(--sc-green-rgb), 0.55);
+  }
+
+  .sc-card[data-status='soon']:hover,
+  .sc-card[data-status='soon']:focus-visible {
+    background: rgba(var(--soon-rgb), 0.08);
+    border-color: rgba(var(--soon-rgb), 0.35);
+    box-shadow: var(--shadow-card-hover), var(--inner-highlight);
   }
 
   .sc-card:hover .sc-card-glow,
@@ -1003,12 +1020,14 @@ html[data-theme='light'] .sc-aurora-2 {
 
   .sc-card:hover .sc-card-chip,
   .sc-card:focus-visible .sc-card-chip {
-    transform: translateY(-2px) scale(1.06);
+    transform: scale(1.14);
   }
 
-  .sc-card:hover .sc-card-chip img {
+  .sc-card:hover .sc-card-chip img,
+  .sc-card:focus-visible .sc-card-chip img {
     filter: none;
     opacity: 1;
+    transform: scale(1.08);
   }
 
   .sc-card:hover:active {
@@ -1233,11 +1252,20 @@ html[data-theme='light'] .sc-aurora-2 {
 
   .sc-card {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: clamp(10px, 2.4vh, 22px);
     min-height: clamp(116px, 22vh, 176px);
     padding: clamp(14px, 2.4vh, 20px);
+    text-align: center;
+  }
+
+  .sc-card-body {
+    align-items: center;
+  }
+
+  .sc-card-status {
+    justify-content: center;
   }
 
   .sc-card-chip {
