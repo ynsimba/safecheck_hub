@@ -112,9 +112,8 @@ export default function OctobreRose() {
         aria-label={open ? 'Fermer Octobre Rose' : 'Octobre Rose — sensibilisation'}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className="sc-rose-fab-glow" aria-hidden="true" />
         <span className="sc-rose-fab-icon" aria-hidden="true">
-          <RibbonIcon size={34} />
+          <RibbonIcon size={64} />
         </span>
       </button>
     </div>

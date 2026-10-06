@@ -1771,41 +1771,26 @@ html[data-theme='light'] .sc-aurora-2 {
 
 .sc-rose-fab {
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(var(--rose-rgb), 0.22);
+  padding: 0;
+  border: 0;
   border-radius: 50%;
   color: var(--rose);
-  background: var(--glass);
-  box-shadow:
-    0 10px 28px -8px rgba(var(--rose-rgb), 0.45),
-    var(--inner-highlight);
-  backdrop-filter: blur(14px) saturate(1.3);
-  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  background: none;
   cursor: pointer;
   isolation: isolate;
   -webkit-tap-highlight-color: transparent;
-  transition:
-    transform 0.45s var(--ease-spring),
-    box-shadow var(--dur-med) ease;
-}
-
-.sc-rose-fab-glow {
-  position: absolute;
-  inset: -6px;
-  border-radius: inherit;
-  background: radial-gradient(circle, rgba(var(--rose-rgb), 0.35), transparent 68%);
-  opacity: 0.7;
-  z-index: -1;
-  pointer-events: none;
+  transition: transform 0.45s var(--ease-spring);
 }
 
 .sc-rose-fab-icon {
   display: grid;
   place-items: center;
   line-height: 0;
+  transform-origin: 50% 0;
 }
 
 .sc-rose-fab-icon img,
@@ -1813,11 +1798,14 @@ html[data-theme='light'] .sc-aurora-2 {
   display: block;
   width: 100%;
   height: 100%;
-  max-width: 34px;
-  max-height: 34px;
   object-fit: contain;
   pointer-events: none;
   user-select: none;
+}
+
+.sc-rose-fab-icon img {
+  max-width: 64px;
+  max-height: 64px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1825,8 +1813,12 @@ html[data-theme='light'] .sc-aurora-2 {
     animation: rose-float 3.6s ease-in-out infinite;
   }
 
-  .sc-rose:not(.is-open) .sc-rose-fab-glow {
-    animation: rose-pulse 2.8s ease-in-out infinite;
+  .sc-rose:not(.is-open) .sc-rose-fab-icon {
+    animation: rose-sway 4.2s ease-in-out infinite;
+  }
+
+  .sc-rose:not(.is-open) .sc-rose-fab-icon img {
+    animation: rose-beat 2.4s ease-in-out infinite;
   }
 }
 
@@ -1840,14 +1832,27 @@ html[data-theme='light'] .sc-aurora-2 {
   }
 }
 
-@keyframes rose-pulse {
+@keyframes rose-sway {
   0%,
   100% {
-    opacity: 0.45;
-    transform: scale(0.92);
+    transform: rotate(-7deg);
   }
   50% {
-    opacity: 0.9;
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes rose-beat {
+  0%,
+  28%,
+  56%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.14);
+  }
+  42% {
     transform: scale(1.08);
   }
 }
@@ -1855,9 +1860,6 @@ html[data-theme='light'] .sc-aurora-2 {
 @media (hover: hover) {
   .sc-rose-fab:hover {
     transform: translateY(-2px) scale(1.06);
-    box-shadow:
-      0 16px 36px -10px rgba(var(--rose-rgb), 0.75),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -1997,7 +1999,12 @@ html[data-theme='dark'] .sc-rose-kicker {
   }
 
   .sc-rose-fab {
-    width: 50px;
-    height: 50px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .sc-rose-fab-icon img {
+    max-width: 54px;
+    max-height: 54px;
   }
 }
