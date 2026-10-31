@@ -7,7 +7,6 @@ import SplashScreen from './components/SplashScreen.jsx'
 import InstallPrompt from './components/InstallPrompt.jsx'
 import Footer from './components/Footer.jsx'
 import Toast from './components/Toast.jsx'
-import OctobreRose from './components/OctobreRose.jsx'
 import { applyTheme, readTheme } from './theme.js'
 import './App.css'
 
@@ -120,7 +119,6 @@ export default function App() {
 
       <Footer />
       <Toast toast={toast} />
-      {booting ? null : <OctobreRose />}
       {booting ? null : <InstallPrompt />}
     </div>
   )
